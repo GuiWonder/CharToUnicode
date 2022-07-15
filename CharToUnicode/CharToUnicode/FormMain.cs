@@ -9,16 +9,65 @@ namespace CharToUnicode
         {
             InitializeComponent();
             textBoxChar.TextChanged += TextBoxChar_TextChanged;
-            checkBoxReturn.CheckedChanged += TextBoxChar_TextChanged;
-            checkBoxSpace.CheckedChanged += TextBoxChar_TextChanged;
-            checkBoxTab.CheckedChanged += TextBoxChar_TextChanged;
-            checkBoxUppercase.CheckedChanged += TextBoxChar_TextChanged;
-            textBoxPrefix.TextChanged += TextBoxChar_TextChanged;
+            textBoxUnicode.TextChanged += TextBoxUnicode_TextChanged;
+        }
+
+        private void TextBoxUnicode_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxUnicode.Focused)
+            {
+                textBoxChar.Text = UniToChar(textBoxUnicode.Text);
+            }
         }
 
         private void TextBoxChar_TextChanged(object sender, EventArgs e)
         {
-            textBoxUnicode.Text = CharToUnicode(textBoxChar.Text);
+            if (textBoxChar.Focused)
+            {
+                textBoxUnicode.Text = CharToUnicode(textBoxChar.Text);
+            }
+        }
+        private string UniToChar(string text)
+        {
+            string result = "";
+            string wd = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == '\r' || text[i] == '\n' || text[i] == ' ' || text[i] == '\t')
+                {
+                    result += PString(wd);
+                    wd = "";
+                    result += text[i];
+                }
+                else
+                {
+                    wd += text[i];
+                    if (i == text.Length - 1)
+                    {
+                        result += PString(wd);
+                    }
+                }
+
+            }
+            return result;
+        }
+
+        private string PString(string wd)
+        {
+            string result = "";
+            string[] vs = wd.Split(new string[] { textBoxPrefix.Text }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var item in vs)
+            {
+                try
+                {
+                    result += char.ConvertFromUtf32(int.Parse(item, System.Globalization.NumberStyles.HexNumber));
+                }
+                catch (Exception)
+                {
+                    result += item;
+                }
+            }
+            return result;
         }
 
         private string CharToUnicode(string text)
