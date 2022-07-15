@@ -38,9 +38,9 @@ namespace CharToUnicode
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxPrefix = new System.Windows.Forms.TextBox();
             this.checkBoxUppercase = new System.Windows.Forms.CheckBox();
+            this.textBoxPrefix = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -134,6 +134,7 @@ namespace CharToUnicode
             this.textBoxUnicode.AcceptsTab = true;
             this.textBoxUnicode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxUnicode.Location = new System.Drawing.Point(345, 23);
+            this.textBoxUnicode.MaxLength = 0;
             this.textBoxUnicode.Multiline = true;
             this.textBoxUnicode.Name = "textBoxUnicode";
             this.textBoxUnicode.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -146,6 +147,7 @@ namespace CharToUnicode
             this.textBoxChar.AcceptsTab = true;
             this.textBoxChar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxChar.Location = new System.Drawing.Point(3, 23);
+            this.textBoxChar.MaxLength = 0;
             this.textBoxChar.Multiline = true;
             this.textBoxChar.Name = "textBoxChar";
             this.textBoxChar.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -183,24 +185,6 @@ namespace CharToUnicode
             this.panel1.Size = new System.Drawing.Size(237, 29);
             this.panel1.TabIndex = 6;
             // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(87, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Prefix:";
-            // 
-            // textBoxPrefix
-            // 
-            this.textBoxPrefix.Location = new System.Drawing.Point(134, 5);
-            this.textBoxPrefix.Name = "textBoxPrefix";
-            this.textBoxPrefix.Size = new System.Drawing.Size(100, 21);
-            this.textBoxPrefix.TabIndex = 1;
-            this.textBoxPrefix.Text = "\\u";
-            // 
             // checkBoxUppercase
             // 
             this.checkBoxUppercase.AutoSize = true;
@@ -210,6 +194,24 @@ namespace CharToUnicode
             this.checkBoxUppercase.TabIndex = 3;
             this.checkBoxUppercase.Text = "Uppercase";
             this.checkBoxUppercase.UseVisualStyleBackColor = true;
+            // 
+            // textBoxPrefix
+            // 
+            this.textBoxPrefix.Location = new System.Drawing.Point(134, 5);
+            this.textBoxPrefix.Name = "textBoxPrefix";
+            this.textBoxPrefix.Size = new System.Drawing.Size(100, 21);
+            this.textBoxPrefix.TabIndex = 1;
+            this.textBoxPrefix.Text = "\\u";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(87, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Prefix:";
             // 
             // FormMain
             // 
